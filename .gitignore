@@ -172,3 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Mad-Assembler source code
+pascal_env/Mad-Assembler/
