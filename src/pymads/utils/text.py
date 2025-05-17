@@ -4,8 +4,7 @@ def skip_spaces(text: str, position: int) -> int:
     """
     Skip spaces in the input string starting from the given position.
     
-    This is a Python implementation of the Pascal 'omin_spacje' function
-    from the original MADS assembler.
+    Original Pascal function: omin_spacje
     
     Args:
         text: The input string to process
@@ -39,9 +38,11 @@ def __inc(text: str, position: int) -> int:
     return position
 
 
-def Tab2Space(text: str, spaces: int = 8) -> str:
+def tab2space(text: str, spaces: int = 8) -> str:
     """
     Convert tabs to spaces in a string.
+
+    Original Pascal function: Tab2Space
     
     Args:
         text: Input string with possible tabs
@@ -51,3 +52,35 @@ def Tab2Space(text: str, spaces: int = 8) -> str:
         String with tabs replaced by spaces
     """
     return text.replace('\t', ' ' * spaces)
+
+
+def ansi_upper_case(text: str) -> str:
+    """
+    Convert string to uppercase.
+    
+    Original Pascal function: AnsiUpperCase
+    
+    Args:
+        text: Input string
+        
+    Returns:
+        Uppercase version of the input string
+    """
+    return text.upper()
+
+
+def up_cas_(char: str) -> str:
+    """
+    Convert a single character to uppercase.
+    
+    Original Pascal function: UpCas_
+    
+    Args:
+        char: Input character (single-character string)
+        
+    Returns:
+        Uppercase version of the input character
+    """
+    if len(char) != 1:
+        raise ValueError("Input must be a single character")
+    return char.upper()
