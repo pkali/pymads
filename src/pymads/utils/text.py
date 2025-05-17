@@ -1,6 +1,6 @@
 # src/pymads/utils/text.py
 
-def omin_spacje(text: str, position: int) -> int:
+def skip_spaces(text: str, position: int) -> int:
     """
     Skip spaces in the input string starting from the given position.
     
@@ -21,3 +21,33 @@ def omin_spacje(text: str, position: int) -> int:
         position += 1
         
     return position
+
+
+def __inc(text: str, position: int) -> int:
+    """
+    Increment position in string, equivalent to Pascal's __inc procedure.
+    
+    Args:
+        text: The input string
+        position: Current position
+        
+    Returns:
+        New incremented position
+    """
+    if position < len(text):
+        return position + 1
+    return position
+
+
+def Tab2Space(text: str, spaces: int = 8) -> str:
+    """
+    Convert tabs to spaces in a string.
+    
+    Args:
+        text: Input string with possible tabs
+        spaces: Number of spaces per tab (default: 8)
+        
+    Returns:
+        String with tabs replaced by spaces
+    """
+    return text.replace('\t', ' ' * spaces)
