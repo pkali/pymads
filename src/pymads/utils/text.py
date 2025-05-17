@@ -84,3 +84,43 @@ def up_cas_(char: str) -> str:
     if len(char) != 1:
         raise ValueError("Input must be a single character")
     return char.upper()
+
+
+def int_to_str(value: int) -> str:
+    """
+    Convert integer to string.
+    
+    Original Pascal function: IntToStr
+    
+    Args:
+        value: Integer value
+        
+    Returns:
+        String representation of the integer
+    """
+    if not isinstance(value, int):
+        raise ValueError("Input must be an integer")
+    if isinstance(value, bool):
+        raise ValueError("Input must not be a boolean") 
+    return str(value)
+
+
+def str_to_int(text: str) -> int:
+    """
+    Convert string to integer.
+    
+    Original Pascal function: StrToInt
+    
+    Args:
+        text: String representation of an integer
+        
+    Returns:
+        Integer value
+    
+    Raises:
+        ValueError: If the string cannot be converted to an integer
+    """
+    try:
+        return int(text)
+    except Exception as e:
+        raise ValueError(f"Cannot convert '{text}' to integer: {e}")

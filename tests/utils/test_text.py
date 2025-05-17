@@ -1,7 +1,7 @@
 # tests/utils/test_text.py
 
 import pytest
-from pymads.utils.text import skip_spaces, __inc, tab2space, ansi_upper_case, up_cas_
+from pymads.utils.text import skip_spaces, __inc, tab2space, ansi_upper_case, up_cas_, int_to_str, str_to_int
 
 
 def test_skip_spaces_basic():
@@ -188,3 +188,156 @@ def test_up_cas__non_alphabetic():
     
     # Test with special character and default spaces
     assert up_cas_("^") == "^"
+
+
+def test_int_to_str_basic():
+    """Test basic int_to_str functionality."""
+    # Test with positive integer
+    assert int_to_str(123) == "123"
+    
+    # Test with negative integer
+    assert int_to_str(-123) == "-123"
+    
+    # Test with zero
+    assert int_to_str(0) == "0"
+    
+    # Test with large integer
+    assert int_to_str(1234567890) == "1234567890"
+
+
+def test_int_to_str_non_integer():
+    """Test int_to_str with non-integer input."""
+    with pytest.raises(ValueError):
+        int_to_str("abc")
+    # Test with float
+    with pytest.raises(ValueError):
+        int_to_str(123.45)
+    # Test with string representation of a float
+    with pytest.raises(ValueError):
+        int_to_str("123.45")
+    # Test with list
+    with pytest.raises(ValueError):
+        int_to_str([1, 2, 3])
+    # Test with dictionary
+    with pytest.raises(ValueError):
+        int_to_str({"key": "value"})
+    # Test with tuple
+    with pytest.raises(ValueError):
+        int_to_str((1, 2, 3))
+    # Test with set
+    with pytest.raises(ValueError):
+        int_to_str({1, 2, 3})
+    # Test with None
+    with pytest.raises(ValueError):
+        int_to_str(None)
+    # Test with boolean
+    with pytest.raises(ValueError):
+        int_to_str(True)
+    # Test with boolean string
+    with pytest.raises(ValueError):
+        int_to_str("True")
+    # Test with empty list
+    with pytest.raises(ValueError):
+        int_to_str([])
+    # Test with empty dictionary
+    with pytest.raises(ValueError):
+        int_to_str({})
+    # Test with empty tuple
+    with pytest.raises(ValueError):
+        int_to_str(())
+    # Test with empty set
+    with pytest.raises(ValueError):
+        int_to_str(set())
+    # Test with empty string
+    with pytest.raises(ValueError):
+        int_to_str("")
+    # Test with empty string and custom spaces
+    with pytest.raises(ValueError):
+        int_to_str("  ")
+    # Test with empty string and default spaces
+    with pytest.raises(ValueError):
+        int_to_str("\n \t")
+
+
+def test_str_to_int_basic():
+    """Test basic str_to_int functionality."""
+    # Test with positive integer string
+    assert str_to_int("123") == 123
+    
+    # Test with negative integer string
+    assert str_to_int("-123") == -123
+    
+    # Test with zero string
+    assert str_to_int("0") == 0
+    
+    # Test with large integer string
+    assert str_to_int("1234567890") == 1234567890
+
+
+def test_str_to_int_non_integer():
+    """Test str_to_int with non-integer input."""
+    with pytest.raises(ValueError):
+        str_to_int("abc")
+    # Test with float string
+    with pytest.raises(ValueError):
+        str_to_int("123.45")
+    # Test with list
+    with pytest.raises(ValueError):
+        str_to_int([1, 2, 3])
+    # Test with dictionary
+    with pytest.raises(ValueError):
+        str_to_int({"key": "value"})
+    # Test with tuple
+    with pytest.raises(ValueError):
+        str_to_int((1, 2, 3))
+    # Test with set
+    with pytest.raises(ValueError):
+        str_to_int({1, 2, 3})
+    # Test with None
+    with pytest.raises(ValueError):
+        str_to_int(None)
+    # Test with boolean string
+    with pytest.raises(ValueError):
+        str_to_int("True")
+    # Test with empty list
+    with pytest.raises(ValueError):
+        str_to_int([])
+    # Test with empty dictionary
+    with pytest.raises(ValueError):
+        str_to_int({})
+    # Test with empty tuple
+    with pytest.raises(ValueError):
+        str_to_int(())
+    # Test with empty set
+    with pytest.raises(ValueError):
+        str_to_int(set())
+    # Test with empty string
+    with pytest.raises(ValueError):
+        str_to_int("")
+    # Test with empty string and custom spaces
+    with pytest.raises(ValueError):
+        str_to_int("  ")
+    # Test with empty string and default spaces
+    with pytest.raises(ValueError):
+        str_to_int("\n \t")
+    # Test with non-integer string
+    with pytest.raises(ValueError):
+        str_to_int("abc")
+    # Test with float string
+    with pytest.raises(ValueError):
+        str_to_int("123.45")
+    # Test with string representation of a float
+    with pytest.raises(ValueError):
+        str_to_int("123.45")
+    # Test with list
+    with pytest.raises(ValueError):
+        str_to_int([1, 2, 3])
+    # Test with dictionary
+    with pytest.raises(ValueError):
+        str_to_int({"key": "value"})
+    # Test with tuple
+    with pytest.raises(ValueError):
+        str_to_int((1, 2, 3))
+    # Test with set
+    with pytest.raises(ValueError):
+        str_to_int({1, 2, 3})
